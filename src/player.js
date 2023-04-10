@@ -13,32 +13,30 @@ export default class Player {
     this.game.updateBoard();
   }
 
-  moveLeft() {
-    if (!this.game.validPosition(this._position.x - 1, this._position.y))
+  move(mx, my) {
+    if (!this.game.validPosition(this._position.x + mx, this._position.y + my))
       return;
-    this._position.moveLeft();
+    this._position.moveTo({
+      x: this._position.x + mx,
+      y: this._position.y + my,
+    });
     this.game.updateBoard();
+  }
+
+  moveLeft() {
+    this.move(-1, 0);
   }
 
   moveRight() {
-    if (!this.game.validPosition(this._position.x + 1, this._position.y))
-      return;
-    this._position.moveRight();
-    this.game.updateBoard();
+    this.move(1, 0);
   }
 
   moveUp() {
-    if (!this.game.validPosition(this._position.x, this._position.y - 1))
-      return;
-    this._position.moveUp();
-    this.game.updateBoard();
+    this.move(0, -1);
   }
 
   moveDown() {
-    if (!this.game.validPosition(this._position.x, this._position.y + 1))
-      return;
-    this._position.moveDown();
-    this.game.updateBoard();
+    this.move(0, 1);
   }
 
   get position() {
