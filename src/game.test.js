@@ -1,5 +1,7 @@
 import Game, { TILE_CONTENTS } from "./game";
 import { beforeEach, expect, describe, it } from "vitest";
+import Player from "./player";
+import Position from "./position";
 
 let game;
 
@@ -21,21 +23,28 @@ describe("setupBoard", () => {
 describe("setPlayer", () => {
   it("should set the player position", () => {
     game.setupBoard(3, 3);
-    game.setPlayer(1, 1);
+    let player = new Player(game);
+    player.moveTo(2, 1);
 
-    expect(game.getPlayer()).toEqual([1, 1]);
-    expect(game.getTileAt(1, 1)).toBe(TILE_CONTENTS.PLAYER);
+    expect(player.position).toEqual(new Position({ x: 2, y: 1 }));
+    expect(game.getTileAt(2, 1)).toBe(TILE_CONTENTS.PLAYER);
   });
 });
 
 describe("movePlayer", () => {
   it("should move the player to the new position", () => {
     game.setupBoard(3, 3);
-    game.setPlayer(1, 1);
+    let player = new Player(game);
 
-    game.movePlayer(1, 0);
+    player.moveTo(1, 0);
 
-    expect(game.getPlayer()).toEqual([1, 0]);
+    expect(player.position).toEqual(new Position({ x: 1, y: 0 }));
     expect(game.getTileAt(1, 0)).toBe(TILE_CONTENTS.PLAYER);
+
+    player.moveDown();
+
+    expect(player.position).toEqual(new Position({ x: 1, y: 1 }));
+    expect(game.getTileAt(1, 0)).toBe(TILE_CONTENTS.EMPTY);
+    expect(game.getTileAt(1, 1)).toBe(TILE_CONTENTS.PLAYER);
   });
 });

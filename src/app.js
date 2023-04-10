@@ -1,24 +1,40 @@
 import { show } from "./utils";
 import Game, { TILE_CONTENTS } from "./game";
+import Player from "./player";
 
 console.log(show());
 
 let game = new Game();
 game.setupBoard(20, 20);
-game.setPlayer(5, 5);
+let player = new Player(game);
+
+function keydown(event) {
+  let key = event.code;
+  if (key === "Numpad4") {
+    player.moveLeft();
+    draw();
+  }
+  if (key === "Numpad6") {
+    player.moveRight();
+    draw();
+  }
+  if (key === "Numpad8") {
+    player.moveUp();
+    draw();
+  }
+  if (key === "Numpad2") {
+    player.moveDown();
+    draw();
+  }
+}
+
+window.addEventListener("keydown", keydown, false);
 
 let canvas = document.getElementById("canvas");
 let width = canvas.width;
 let height = canvas.height;
 const ctx = canvas.getContext("2d");
 ctx.fillStyle = "red";
-
-let state = {
-  x: width / 2,
-  y: height / 2,
-};
-
-function update(progress) {}
 
 const CELL_SIZE = 25;
 const CELL_MARGIN = 5;
@@ -38,15 +54,4 @@ function draw() {
   });
 }
 
-function loop(timestamp) {
-  var progress = timestamp - lastRender;
-
-  update(progress);
-  draw();
-
-  lastRender = timestamp;
-  window.requestAnimationFrame(loop);
-}
-
-let lastRender = 0;
-window.requestAnimationFrame(loop);
+draw();
