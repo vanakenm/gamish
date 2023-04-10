@@ -1,10 +1,11 @@
 import { show } from "./utils";
-import Game from "./game";
+import Game, { TILE_CONTENTS } from "./game";
 
 console.log(show());
 
 let game = new Game();
-game.setupBoard(5, 5);
+game.setupBoard(20, 20);
+game.setPlayer(5, 5);
 
 let canvas = document.getElementById("canvas");
 let width = canvas.width;
@@ -17,13 +18,7 @@ let state = {
   y: height / 2,
 };
 
-function update(progress) {
-  state.x += progress / 5;
-
-  if (state.x > width) {
-    state.x -= width;
-  }
-}
+function update(progress) {}
 
 const CELL_SIZE = 25;
 const CELL_MARGIN = 5;
@@ -32,6 +27,7 @@ function draw() {
   ctx.clearRect(0, 0, width, height);
   game.getBoard().forEach((row, y) => {
     row.forEach((tile, x) => {
+      ctx.fillStyle = tile === TILE_CONTENTS.EMPTY ? "blue" : "red";
       ctx.fillRect(
         x * CELL_SIZE,
         y * CELL_SIZE,
@@ -45,7 +41,7 @@ function draw() {
 function loop(timestamp) {
   var progress = timestamp - lastRender;
 
-  //update(progress);
+  update(progress);
   draw();
 
   lastRender = timestamp;

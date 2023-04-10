@@ -27,3 +27,15 @@ describe("setPlayer", () => {
     expect(game.getTileAt(1, 1)).toBe(TILE_CONTENTS.PLAYER);
   });
 });
+
+describe("movePlayer", () => {
+  it("should move the player to the new position", () => {
+    game.setupBoard(3, 3);
+    game.setPlayer(1, 1);
+
+    game.movePlayer(1, 0);
+
+    expect(game.getPlayer()).toEqual([1, 0]);
+    expect(game.getTileAt(1, 0)).toBe(TILE_CONTENTS.PLAYER);
+  });
+});
