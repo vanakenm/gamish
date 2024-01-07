@@ -133,3 +133,7 @@ This runs vitest in watch mode where it runs the tests after each change.
 ## That's it for today
 
 Not the fanciest part of the job - but needed, it works, and I understand all the parts which matters to me.
+
+What I learned:
+
+- Parcel
