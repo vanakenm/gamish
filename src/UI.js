@@ -57,7 +57,7 @@ function preload(images) {
 
 export async function main() {
   console.log("Preload images");
-  images = await preload([empty, forest, char]);
+  let images = await preload([empty, forest, char]);
 
   console.log("Init GameUI");
   let ui = new GameUI(images);
