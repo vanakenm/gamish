@@ -10,7 +10,6 @@ export default class Player {
   moveTo(x, y) {
     if (!this.game.validPosition(x, y)) return;
     this._position.moveTo({ x, y });
-    this.game.updateBoard();
   }
 
   move(mx, my) {
@@ -20,7 +19,6 @@ export default class Player {
       x: this._position.x + mx,
       y: this._position.y + my,
     });
-    this.game.updateBoard();
   }
 
   moveLeft() {

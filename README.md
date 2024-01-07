@@ -17,7 +17,7 @@ Test
 
 - [x] Board
 - [x] Player
-- [] Move player around
+- [x] Move player around
 - [] Obstacles
   - Array
   - Terrain vs units in board?

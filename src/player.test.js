@@ -7,7 +7,7 @@ let game, player;
 
 beforeEach(() => {
   game = new Game();
-  game.setupBoard(3, 3);
+  game.setupBoard(3, 3, 0);
   player = new Player(game);
 });
 
