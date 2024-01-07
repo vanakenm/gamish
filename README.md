@@ -18,19 +18,23 @@ Test
 - [x] Board
 - [x] Player
 - [x] Move player around
-- [] Obstacles
+- [x] Obstacles
   - Array
   - Terrain vs units in board?
   - Extract Board to own class
-- [] Replace square by tiles
+- [x] Replace square by tiles
 - [] Turns
   - currentTurn on Game
   - Player has a movement score
   - When depleted, need to wait for next turn
+- [] Units
+  - Units have movement
+  - Units block move of other units
+  - UI need the concept of a "selected unit" (Game does not care, can move any of them any number of time as long as they don't deplete)
 - [] Enemy units
   - Array
   - Block movement
-- [] Move enemy units
+- [] Enemy
   - Direction of the player
   - Manage obstacles (basic first)
 
