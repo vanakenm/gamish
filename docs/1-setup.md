@@ -1,4 +1,4 @@
-# Gamish
+# Gamish V1 - Goals and Setup
 
 ## Principles
 
